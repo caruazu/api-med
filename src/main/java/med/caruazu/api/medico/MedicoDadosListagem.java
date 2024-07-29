@@ -1,6 +1,7 @@
 package med.caruazu.api.medico;
 
 public record MedicoDadosListagem(
+		Long id,
 		String nome,
 		String email,
 		String crm,
@@ -8,6 +9,7 @@ public record MedicoDadosListagem(
 ) {
 	public MedicoDadosListagem (Medico medico){
 		this(
+				medico.getId(),
 				medico.getNome(),
 				medico.getEmail(),
 				medico.getCrm(),

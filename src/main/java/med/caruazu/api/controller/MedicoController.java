@@ -1,15 +1,13 @@
 package med.caruazu.api.controller;
 
 import jakarta.validation.Valid;
-import med.caruazu.api.medico.Medico;
-import med.caruazu.api.medico.MedicoDadosCadastro;
-import med.caruazu.api.medico.MedicoRepository;
-import med.caruazu.api.medico.MedicoDadosListagem;
+import med.caruazu.api.medico.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("medicos")
@@ -29,10 +27,21 @@ public class MedicoController {
     }
 
     @GetMapping
-    public List<MedicoDadosListagem> listar(){
-        return medicoRepository.findAll()
-                .stream()
-                .map(MedicoDadosListagem::new)
-                .toList();
+    public Page<MedicoDadosListagem> listar(
+            @PageableDefault(size = 10,sort = {"nome"}            )
+            Pageable paginacao
+        ){
+        return medicoRepository.findAll(paginacao).map(MedicoDadosListagem::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void editar(
+            @RequestBody
+            @Valid
+            MedicoDadosAtualizar dados
+    ){
+        Medico medico = medicoRepository.getReferenceById(dados.id());
+        medico.atualizar(dados);
     }
 }
