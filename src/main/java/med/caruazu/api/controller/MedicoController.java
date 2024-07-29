@@ -1,6 +1,7 @@
 package med.caruazu.api.controller;
 
-import med.caruazu.api.medico.DadosCadastroMedico;
+import jakarta.validation.Valid;
+import med.caruazu.api.medico.MedicoDados;
 import med.caruazu.api.medico.Medico;
 import med.caruazu.api.medico.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,11 @@ public class MedicoController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody DadosCadastroMedico dados){
+    public void cadastrar(
+            @RequestBody
+            @Valid
+            MedicoDados dados
+        ){
         medicoRepository.save(new Medico(dados));
     }
 }

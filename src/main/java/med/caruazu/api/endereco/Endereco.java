@@ -19,7 +19,7 @@ public class Endereco {
     private String cidade;
     private String uf;
 
-    public Endereco(DadosEndereco dados) {
+    public Endereco(EnderecoDados dados) {
         this.logradouro = dados.logradouro();
         this.numero = dados.numero();
         this.bairro = dados.bairro();
