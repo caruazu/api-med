@@ -18,11 +18,7 @@ public class MedicoController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(
-            @RequestBody
-            @Valid
-            MedicoDadosCadastro dados
-        ){
+    public void cadastrar(@RequestBody @Valid MedicoDadosCadastro dados){
         medicoRepository.save(new Medico(dados));
     }
 
@@ -31,17 +27,22 @@ public class MedicoController {
             @PageableDefault(size = 10,sort = {"nome"}            )
             Pageable paginacao
         ){
-        return medicoRepository.findAll(paginacao).map(MedicoDadosListagem::new);
+        return medicoRepository.findAllByAtivoTrue(paginacao).map(MedicoDadosListagem::new);
     }
 
     @PutMapping
     @Transactional
-    public void editar(
-            @RequestBody
-            @Valid
-            MedicoDadosAtualizar dados
-    ){
+    public void editar(@RequestBody @Valid MedicoDadosAtualizar dados){
         Medico medico = medicoRepository.getReferenceById(dados.id());
         medico.atualizar(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+        Medico medico = medicoRepository.getReferenceById(id);
+        System.out.println(medico.isAtivo());
+        medico.excluir();
+        System.out.println(medico.isAtivo());
     }
 }
