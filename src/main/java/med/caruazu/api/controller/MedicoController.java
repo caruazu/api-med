@@ -31,7 +31,7 @@ public class MedicoController {
         var uri = uriComponentsBuilder.path("/medicos/{id}")
                 .buildAndExpand(medico_id)
                 .toUri();
-        var dto = new MedicoDadosCompletos(medico);
+        var dto = new MedicoDadosDetalhamento(medico);
 
         return ResponseEntity.created(uri).body(dto);
     }
@@ -47,10 +47,10 @@ public class MedicoController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity atualizar(@RequestBody @Valid MedicoDadosAtualizar dados){
+    public ResponseEntity atualizar(@RequestBody @Valid MedicoDadosAtualizacao dados){
         Medico medico = medicoRepository.getReferenceById(dados.id());
         medico.atualizar(dados);
-        return ResponseEntity.ok(new MedicoDadosCompletos(medico));
+        return ResponseEntity.ok(new MedicoDadosDetalhamento(medico));
     }
 
     @DeleteMapping("/{id}")
@@ -64,5 +64,9 @@ public class MedicoController {
         return ResponseEntity.noContent().build();
     }
 
-
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar(@PathVariable Long id){
+        Medico medico = medicoRepository.getReferenceById(id);
+        return ResponseEntity.ok(new MedicoDadosDetalhamento(medico));
+    }
 }

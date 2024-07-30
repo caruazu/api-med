@@ -2,7 +2,7 @@ package med.caruazu.api.medico;
 
 import med.caruazu.api.endereco.Endereco;
 
-public record MedicoDadosCompletos(
+public record MedicoDadosDetalhamento(
 		Long id,
 		String nome,
 		String email,
@@ -10,7 +10,7 @@ public record MedicoDadosCompletos(
 		String telefone,
 		Especialidade especialidade,
 		Endereco endereco) {
-	public MedicoDadosCompletos(Medico medico){
+	public MedicoDadosDetalhamento(Medico medico){
 		this(
 				medico.getId(),
 				medico.getNome(),

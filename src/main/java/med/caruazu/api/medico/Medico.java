@@ -44,7 +44,7 @@ public class Medico {
         this.especialidade = dados.especialidade();
     }
 
-    public void atualizar(MedicoDadosAtualizar dados) {
+    public void atualizar(MedicoDadosAtualizacao dados) {
         if(dados.nome() != null){
             this.nome = dados.nome();
         }
