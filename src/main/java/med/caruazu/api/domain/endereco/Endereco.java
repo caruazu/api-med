@@ -1,4 +1,4 @@
-package med.caruazu.api.endereco;
+package med.caruazu.api.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

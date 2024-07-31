@@ -1,4 +1,4 @@
-package med.caruazu.api.medico;
+package med.caruazu.api.domain.medico;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

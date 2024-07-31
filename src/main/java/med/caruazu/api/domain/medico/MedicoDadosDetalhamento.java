@@ -1,6 +1,6 @@
-package med.caruazu.api.medico;
+package med.caruazu.api.domain.medico;
 
-import med.caruazu.api.endereco.Endereco;
+import med.caruazu.api.domain.endereco.Endereco;
 
 public record MedicoDadosDetalhamento(
 		Long id,

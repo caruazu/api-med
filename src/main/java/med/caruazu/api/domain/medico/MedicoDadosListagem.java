@@ -1,4 +1,4 @@
-package med.caruazu.api.medico;
+package med.caruazu.api.domain.medico;
 
 public record MedicoDadosListagem(
 		Long id,

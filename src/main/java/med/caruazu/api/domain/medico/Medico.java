@@ -1,11 +1,11 @@
-package med.caruazu.api.medico;
+package med.caruazu.api.domain.medico;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.caruazu.api.endereco.Endereco;
+import med.caruazu.api.domain.endereco.Endereco;
 
 
 // lombok annotation:

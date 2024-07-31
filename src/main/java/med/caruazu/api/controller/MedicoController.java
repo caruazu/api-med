@@ -1,7 +1,7 @@
 package med.caruazu.api.controller;
 
 import jakarta.validation.Valid;
-import med.caruazu.api.medico.*;
+import med.caruazu.api.domain.medico.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
