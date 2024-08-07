@@ -2,7 +2,12 @@
 API para uma aplicação de gerenciamento de consultas clínicas
 
 ## Dependências
-- Postgress 12
+Esta aplicação foi construída com:
+
+- linux kernel: 5.15
+- linux Mint: 21
+- Postgress: 12
+- Maven: 3.9
 
 ## configuração
 Utilize o arquivo `.env.exemple` na raiz do projeto como exemplo para suas variáveis locais da API.
