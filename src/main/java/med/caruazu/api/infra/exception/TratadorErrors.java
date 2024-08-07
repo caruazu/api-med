@@ -1,4 +1,4 @@
-package med.caruazu.api.infra;
+package med.caruazu.api.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
