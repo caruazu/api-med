@@ -29,6 +29,7 @@ public class SecurityConfiguration {
 			)
 			.authorizeHttpRequests(req -> {
 				req.requestMatchers(HttpMethod.POST, "/login").permitAll();
+				req.requestMatchers(HttpMethod.POST, "/cadastro").permitAll();
 //				exemplo:
 //				req.requestMatchers(HttpMethod.GET,"/medicos").permitAll();
 				req.anyRequest().authenticated();
