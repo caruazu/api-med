@@ -57,9 +57,7 @@ public class MedicoController {
     @Transactional
     public ResponseEntity excluir(@PathVariable Long id){
         Medico medico = medicoRepository.getReferenceById(id);
-        System.out.println(medico.isAtivo());
         medico.excluir();
-        System.out.println(medico.isAtivo());
 
         return ResponseEntity.noContent().build();
     }

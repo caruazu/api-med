@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class TratadorErrors {
 
 	@ExceptionHandler(EntityNotFoundException.class)
-	public ResponseEntity TratadorErrors404(){
+	public ResponseEntity TratadorErros404(){
 		return ResponseEntity.notFound().build();
 	}
 
@@ -26,28 +26,23 @@ public class TratadorErrors {
 		return ResponseEntity.badRequest().body(erroPersonalizado);
 	}
 
-	@ExceptionHandler(HttpMessageNotReadableException.class)
-	public ResponseEntity tratarErro400(HttpMessageNotReadableException ex) {
-		return ResponseEntity.badRequest().body(ex.getMessage());
-	}
-
 	@ExceptionHandler(BadCredentialsException.class)
-	public ResponseEntity tratarErroBadCredentials() {
+	public ResponseEntity TratadorErros401BadCredentials(){
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
 	}
 
 	@ExceptionHandler(AuthenticationException.class)
-	public ResponseEntity tratarErroAuthentication() {
+	public ResponseEntity TratadorErros401Autenticação() {
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Falha na autenticação");
 	}
 
 	@ExceptionHandler(AccessDeniedException.class)
-	public ResponseEntity tratarErroAcessoNegado() {
+	public ResponseEntity TratadorErros403() {
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado");
 	}
 
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity tratarErro500(Exception ex) {
+	public ResponseEntity TratadorErros500(Exception ex) {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " +ex.getLocalizedMessage());
 	}
 
