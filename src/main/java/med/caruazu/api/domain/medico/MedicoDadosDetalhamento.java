@@ -9,7 +9,8 @@ public record MedicoDadosDetalhamento(
 		String crm,
 		String telefone,
 		Especialidade especialidade,
-		Endereco endereco) {
+		Endereco endereco
+) {
 	public MedicoDadosDetalhamento(Medico medico){
 		this(
 				medico.getId(),
