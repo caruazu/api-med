@@ -6,9 +6,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.caruazu.api.domain.medico.Medico;
+import med.caruazu.api.domain.motivoCancelamento.MotivoCancelamento;
 import med.caruazu.api.domain.paciente.Paciente;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 // lombok annotation:
 @Getter
@@ -32,5 +33,13 @@ public class Consulta {
 	@JoinColumn(name = "paciente_id")
 	private Paciente paciente;
 
-	private LocalDate data;
+	private	LocalDateTime data;
+
+	@Column(name = "motivo_cancelamento")
+	@Enumerated(EnumType.STRING)
+	private MotivoCancelamento motivoCancelamento;
+
+	public void cancelar(MotivoCancelamento motivo) {
+		this.motivoCancelamento = motivo;
+	}
 }
